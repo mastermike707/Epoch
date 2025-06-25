@@ -5,11 +5,11 @@ This document outlines the detailed implementation steps for the Knowledge Graph
 ## Phase 1: Foundational Setup & Core Note Management (MVP)
 
 ### AWS & Project Setup:
-- [ ] Create an AWS account and configure AWS CLI.
-- [ ] Install AWS SAM CLI or Serverless Framework (Decision: Prefer AWS SAM CLI for tighter integration with AWS services, or Serverless Framework for broader cloud support. Let's proceed with **AWS SAM CLI** as the primary choice for this plan).
-- [ ] Create your GitHub repository and set up basic CI/CD.
-- [ ] Initialize a new React project using Vite.
-- [ ] Initialize a new Spring Boot project using Gradle.
+- [x] Create an AWS account and configure AWS CLI.
+- [x] Install AWS SAM CLI or Serverless Framework (Decision: Prefer AWS SAM CLI for tighter integration with AWS services, or Serverless Framework for broader cloud support. Let's proceed with **AWS SAM CLI** as the primary choice for this plan).
+- [x] Create your GitHub repository and set up basic CI/CD.
+- [x] Initialize a new React project using Vite.
+- [x] Initialize a new Spring Boot project using Gradle.
 
 
 ### Authentication (AWS Cognito):
@@ -19,8 +19,8 @@ This document outlines the detailed implementation steps for the Knowledge Graph
 - [ ] Create an API Gateway Authorizer using Cognito to protect your backend APIs.
 
 ### Backend Core (Java Spring Boot on Lambda):
-- [ ] Configure Spring Boot application to run as an AWS Lambda function (e.g., using spring-cloud-function-web and spring-cloud-function-adapter-aws).
-- [ ] Define a basic HelloController Lambda function and deploy it via API Gateway using SAM/Serverless. Test a GET /hello endpoint.
+- [x] Configure Spring Boot application to run as an AWS Lambda function (e.g., using spring-cloud-function-web and spring-cloud-function-adapter-aws).
+- [x] Define a basic HelloController Lambda function and deploy it via API Gateway using SAM/Serverless. Test a GET /hello endpoint.
 - [ ] Configure application.properties for Lambda environment variables.
 
 ### Database Setup (AWS RDS PostgreSQL):

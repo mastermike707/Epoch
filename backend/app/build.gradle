@@ -1,0 +1,45 @@
+plugins {
+	id ('org.springframework.boot') version '3.5.0'
+	id ('io.spring.dependency-management') version '1.1.7'
+	id 'java'
+}
+
+group = 'com.epoch'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        // Set the Java version to 17
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+    sourceCompatibility = JavaVersion.VERSION_21
+    sourceSets {
+        test {
+            java {
+                srcDir 'src/com/epoch'
+            }
+        }
+    }
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.cloud:spring-cloud-function-web:4.1.0'
+	implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws:4.1.0'
+	implementation 'com.amazonaws:aws-lambda-java-core:1.2.2'
+	implementation 'com.amazonaws:aws-lambda-java-events:3.11.0'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+// Add this block to configure the mainClassName
+springBoot {
+    mainClass = 'com.epoch.Application'
+}

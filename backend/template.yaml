@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Spring Boot Lambda Function
+
+Resources:
+  CognitoUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: KnowledgeGraphUserPool
+      AutoVerifiedAttributes:
+        - email
+
+  CognitoUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: !Ref CognitoUserPool
+      ClientName: KnowledgeGraphUserPoolClient
+      ExplicitAuthFlows:
+        - ALLOW_USER_SRP_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+        - ALLOW_USER_PASSWORD_AUTH
+      GenerateSecret: false
+
+  HelloWorldFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: main.java.com.example.LambdaHandler::handleRequest
+      Runtime: java21
+      CodeUri: ./build/libs/backend-0.0.1-SNAPSHOT.jar
+      MemorySize: 512
+      Timeout: 30
+      Policies:
+        - AWSLambdaBasicExecutionRole
+      Events:
+        HelloWorldAPI:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: GET
+            Auth:
+              Authorizer: CognitoAuthorizer
+
+  CognitoAuthorizer:
+    Type: AWS::ApiGateway::Authorizer
+    Properties:
+      Name: CognitoAuthorizer
+      Type: COGNITO_USER_POOLS
+      RestApiId: !GetAtt ApiGatewayRestApi.RestApiId
+      UserPoolIds:
+        - !Ref CognitoUserPool
+      IdentitySource: method.request.header.Authorization
+
+Outputs:
+  UserPoolId:
+    Value: !Ref CognitoUserPool
+    Description: The ID of the Cognito User Pool
+
+  UserPoolClientId:
+    Value: !Ref CognitoUserPoolClient
+    Description: The ID of the Cognito User Pool Client
+
+  ApiURL:
+    Value: !Sub "https://${ApiGatewayRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello"
+    Description: API endpoint URL for Prod environment
