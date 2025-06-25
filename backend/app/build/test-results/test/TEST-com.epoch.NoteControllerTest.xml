@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.epoch.NoteControllerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-06-25T16:37:03.653Z" hostname="SWORDOFJUSTICE" time="5.521">
+  <properties/>
+  <testcase name="testGetNotes()" classname="com.epoch.NoteControllerTest" time="5.521">
+    <failure message="java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;404&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;404&gt;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$matcher$9(StatusResultMatchers.java:640)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:214)
+	at com.epoch.NoteControllerTest.testGetNotes(NoteControllerTest.java:21)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <system-out><![CDATA[
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.0)
+
+2025-06-25T09:36:59.302-07:00  INFO 20320 --- [    Test worker] com.epoch.NoteControllerTest             : Starting NoteControllerTest using Java 21.0.7 with PID 20320 (started by mike in /mnt/c/Users/Mike/Desktop/Coding/Full Stack Demo/backend/app)
+2025-06-25T09:36:59.312-07:00  INFO 20320 --- [    Test worker] com.epoch.NoteControllerTest             : No active profile set, falling back to 1 default profile: "default"
+2025-06-25T09:37:00.924-07:00  INFO 20320 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-06-25T09:37:00.924-07:00  INFO 20320 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-06-25T09:37:03.245-07:00  INFO 20320 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2319 ms
+2025-06-25T09:37:03.509-07:00  INFO 20320 --- [    Test worker] com.epoch.NoteControllerTest             : Started NoteControllerTest in 6.6 seconds (process running for 12.495)
+2025-06-25T09:37:09.017-07:00  WARN 20320 --- [    Test worker] o.s.web.servlet.PageNotFound             : No mapping for GET /notes
+2025-06-25T09:37:09.063-07:00  WARN 20320 --- [    Test worker] o.s.web.servlet.PageNotFound             : No endpoint GET /notes.
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /notes
+       Parameters = {}
+          Headers = []
+             Body = <no character encoding set>
+    Session Attrs = {}
+
+Handler:
+             Type = null
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.servlet.NoHandlerFoundException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 404
+    Error message = No endpoint GET /notes.
+          Headers = []
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/home/mike/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.17.5/58f9507f5f28d1d3e7adfb4ec2fe37c29d332c9b/byte-buddy-agent-1.17.5.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
