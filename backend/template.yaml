@@ -2,25 +2,15 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Spring Boot Lambda Function
 
+Parameters:
+  CognitoUserPoolId:
+    Type: String
+    Description: "The ID of the Cognito User Pool."
+  CognitoAppClientId:
+    Type: String
+    Description: "The ID of the Cognito User Pool App Client."
+
 Resources:
-  CognitoUserPool:
-    Type: AWS::Cognito::UserPool
-    Properties:
-      UserPoolName: KnowledgeGraphUserPool
-      AutoVerifiedAttributes:
-        - email
-
-  CognitoUserPoolClient:
-    Type: AWS::Cognito::UserPoolClient
-    Properties:
-      UserPoolId: !Ref CognitoUserPool
-      ClientName: KnowledgeGraphUserPoolClient
-      ExplicitAuthFlows:
-        - ALLOW_USER_SRP_AUTH
-        - ALLOW_REFRESH_TOKEN_AUTH
-        - ALLOW_USER_PASSWORD_AUTH
-      GenerateSecret: false
-
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -32,33 +22,32 @@ Resources:
       Policies:
         - AWSLambdaBasicExecutionRole
       Events:
-        HelloWorldAPI:
-          Type: Api
+        Api:
+          Type: HttpApi
           Properties:
             Path: /hello
             Method: GET
             Auth:
-              Authorizer: CognitoAuthorizer
+              Authorizer: !Ref ApiGatewayCognitoAuthorizer
+              AuthorizationScopes:
+                - "email"
+                - "openid"
+                - "profile"
 
-  CognitoAuthorizer:
-    Type: AWS::ApiGateway::Authorizer
+  ApiGatewayCognitoAuthorizer:
+    Type: AWS::ApiGatewayV2::Authorizer
     Properties:
       Name: CognitoAuthorizer
-      Type: COGNITO_USER_POOLS
-      RestApiId: !GetAtt ApiGatewayRestApi.RestApiId
-      UserPoolIds:
-        - !Ref CognitoUserPool
-      IdentitySource: method.request.header.Authorization
+      ApiId: !Ref HttpApi
+      AuthorizerType: JWT
+      IdentitySource:
+        - "$request.header.Authorization"
+      JwtConfiguration:
+        Audience:
+          - !Ref CognitoAppClientId
+        Issuer: !Sub "https://cognito-idp.${AWS::Region}.amazonaws.com/${CognitoUserPoolId}"
 
 Outputs:
-  UserPoolId:
-    Value: !Ref CognitoUserPool
-    Description: The ID of the Cognito User Pool
-
-  UserPoolClientId:
-    Value: !Ref CognitoUserPoolClient
-    Description: The ID of the Cognito User Pool Client
-
   ApiURL:
-    Value: !Sub "https://${ApiGatewayRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello"
-    Description: API endpoint URL for Prod environment
+    Description: "API endpoint URL for Prod environment"
+    Value: !Sub "https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com"

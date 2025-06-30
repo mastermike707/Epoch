@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.epoch.NoteControllerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-06-25T16:37:03.653Z" hostname="SWORDOFJUSTICE" time="5.521">
+<testsuite name="com.epoch.NoteControllerTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2025-06-25T16:40:43.397Z" hostname="SWORDOFJUSTICE" time="5.508">
   <properties/>
-  <testcase name="testGetNotes()" classname="com.epoch.NoteControllerTest" time="5.521">
+  <testcase name="testGetNotes()" classname="com.epoch.NoteControllerTest" time="5.508">
     <failure message="java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;404&gt;" type="java.lang.AssertionError">java.lang.AssertionError: Status expected:&lt;200&gt; but was:&lt;404&gt;
 	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:61)
 	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:128)
@@ -23,14 +23,14 @@
 
  :: Spring Boot ::                (v3.5.0)
 
-2025-06-25T09:36:59.302-07:00  INFO 20320 --- [    Test worker] com.epoch.NoteControllerTest             : Starting NoteControllerTest using Java 21.0.7 with PID 20320 (started by mike in /mnt/c/Users/Mike/Desktop/Coding/Full Stack Demo/backend/app)
-2025-06-25T09:36:59.312-07:00  INFO 20320 --- [    Test worker] com.epoch.NoteControllerTest             : No active profile set, falling back to 1 default profile: "default"
-2025-06-25T09:37:00.924-07:00  INFO 20320 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-06-25T09:37:00.924-07:00  INFO 20320 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-06-25T09:37:03.245-07:00  INFO 20320 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2319 ms
-2025-06-25T09:37:03.509-07:00  INFO 20320 --- [    Test worker] com.epoch.NoteControllerTest             : Started NoteControllerTest in 6.6 seconds (process running for 12.495)
-2025-06-25T09:37:09.017-07:00  WARN 20320 --- [    Test worker] o.s.web.servlet.PageNotFound             : No mapping for GET /notes
-2025-06-25T09:37:09.063-07:00  WARN 20320 --- [    Test worker] o.s.web.servlet.PageNotFound             : No endpoint GET /notes.
+2025-06-25T09:40:39.055-07:00  INFO 22958 --- [    Test worker] com.epoch.NoteControllerTest             : Starting NoteControllerTest using Java 21.0.7 with PID 22958 (started by mike in /mnt/c/Users/Mike/Desktop/Coding/Full Stack Demo/backend/app)
+2025-06-25T09:40:39.065-07:00  INFO 22958 --- [    Test worker] com.epoch.NoteControllerTest             : No active profile set, falling back to 1 default profile: "default"
+2025-06-25T09:40:40.674-07:00  INFO 22958 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-06-25T09:40:40.674-07:00  INFO 22958 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-06-25T09:40:42.995-07:00  INFO 22958 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2320 ms
+2025-06-25T09:40:43.254-07:00  INFO 22958 --- [    Test worker] com.epoch.NoteControllerTest             : Started NoteControllerTest in 6.545 seconds (process running for 12.438)
+2025-06-25T09:40:48.752-07:00  WARN 22958 --- [    Test worker] o.s.web.servlet.PageNotFound             : No mapping for GET /notes
+2025-06-25T09:40:48.797-07:00  WARN 22958 --- [    Test worker] o.s.web.servlet.PageNotFound             : No endpoint GET /notes.
 
 MockHttpServletRequest:
       HTTP Method = GET

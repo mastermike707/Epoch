@@ -3,7 +3,8 @@ package com.epoch;
 public class Note {
     private String id;
     private String title;
-    private String content;
+        private String content;
+        private String userId;
 
     public Note() {}
 
@@ -35,5 +36,13 @@ public class Note {
 
     public void setContent(String content) {
         this.content = content;
-    }
-}
+            }
+        
+            public String getUserId() {
+                return userId;
+            }
+        
+            public void setUserId(String userId) {
+                this.userId = userId;
+            }
+        }

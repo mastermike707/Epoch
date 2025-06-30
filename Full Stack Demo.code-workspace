@@ -5,6 +5,7 @@
 		}
 	],
 	"settings": {
-		"terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)"
+		"terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+		"java.compile.nullAnalysis.mode": "automatic"
 	}
 }

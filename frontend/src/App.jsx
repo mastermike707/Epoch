@@ -1,5 +1,5 @@
 import { Amplify } from 'aws-amplify';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { withAuthenticator, View, Image } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 
 import React, { useState } from 'react';
@@ -64,4 +64,32 @@ function App({ signOut, user }) {
   );
 }
 
-export default withAuthenticator(App);
+const formFields = {
+  signUp: {
+    email: {
+      order: 1,
+      placeholder: 'Enter your email',
+    },
+    password: {
+      order: 2,
+    },
+    confirm_password: {
+      order: 3,
+    },
+  },
+};
+
+const components = {
+  Header() {
+    return (
+      <View textAlign="center" padding="1rem">
+        <Image
+          alt="Amplify logo"
+          src="https://docs.amplify.aws/assets/logo-dark.svg"
+        />
+      </View>
+    );
+  },
+};
+
+export default withAuthenticator(App, { components, formFields });

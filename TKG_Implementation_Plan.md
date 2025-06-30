@@ -13,10 +13,10 @@ This document outlines the detailed implementation steps for the Knowledge Graph
 
 
 ### Authentication (AWS Cognito):
-- [ ] Set up an AWS Cognito User Pool for user authentication (sign-up, sign-in).
-- [ ] Integrate AWS Amplify (recommended) into your React app for Cognito authentication.
-- [ ] Implement basic user registration and login forms in React.
-- [ ] Create an API Gateway Authorizer using Cognito to protect your backend APIs.
+- [x] Set up an AWS Cognito User Pool for user authentication (sign-up, sign-in).
+- [x] Integrate AWS Amplify (recommended) into your React app for Cognito authentication.
+- [x] Implement basic user registration and login forms in React.
+- [x] Create an API Gateway Authorizer using Cognito to protect your backend APIs.
 
 ### Backend Core (Java Spring Boot on Lambda):
 - [x] Configure Spring Boot application to run as an AWS Lambda function (e.g., using spring-cloud-function-web and spring-cloud-function-adapter-aws).
@@ -32,8 +32,8 @@ This document outlines the detailed implementation steps for the Knowledge Graph
 
 ### Note CRUD Backend:
 - [ ] Integrate Spring Data JPA with your PostgreSQL database.
-- [ ] Create Note entity and repository.
-- [ ] Implement Spring Boot Lambda functions for:
+- [x] Create Note entity and repository.
+- [x] Implement Spring Boot Lambda functions for:
   - `POST /notes` (Create Note)
   - `GET /notes` (List all notes for a user)
   - `GET /notes/{id}` (Get a specific note)
@@ -42,7 +42,7 @@ This document outlines the detailed implementation steps for the Knowledge Graph
 - [ ] Secure these endpoints using the Cognito Authorizer.
 
 ### Frontend Note Management UI:
-- [ ] Create React components for:
+- [x] Create React components for:
   - A dashboard/list to display user's notes.
   - A basic rich text editor (Decision: Start with a simple `textarea` for MVP, then upgrade to a library like **Draft.js** or **Slate.js** in a later iteration).
   - Forms for creating and editing notes.
@@ -50,7 +50,7 @@ This document outlines the detailed implementation steps for the Knowledge Graph
 - [ ] Enable user authentication and session management in the frontend.
 
 ### Test Phase 1:
-- [ ] Write tests that ensure the application can properly CRUD notes.
+- [x] Write tests that ensure the application can properly CRUD notes.
 ## Phase 2: Knowledge Graph Integration & Basic Search
 
 ### Neo4j AuraDB Setup:
